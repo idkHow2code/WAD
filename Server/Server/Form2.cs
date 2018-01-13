@@ -20,6 +20,7 @@ namespace Server
         Dictionary<String, Socket> ActiveUsers = new Dictionary<String, Socket>();
         Socket server = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
         delegate void SetTextCallback(string text);
+        Socket client;
         NetworkStream ns2;
         StreamWriter writer;
         StreamReader reader;
@@ -92,18 +93,37 @@ namespace Server
             IPEndPoint localEP = new IPEndPoint(IPAddress.Any, 9049);
             server.Bind(localEP);
             server.Listen(10);
-            Socket client = server.Accept();
+            //Socket client = server.Accept();
+            client = server.Accept();
             IPAddress client2addr = ((IPEndPoint)client.RemoteEndPoint).Address;
             ns2 = new NetworkStream(client);
             connections++;
-            this.SetText("New client accepted : " + connections + " active connections");
+            this.SetText(client2addr + " Connected! " + "New client accepted : " + connections + " active connections");
             threadDoWork = new Thread(DoWork);
             threadDoWork.Start();
         }
 
         private void btnSendFile_Click(object sender, EventArgs e)
         {
-            
+            try
+            {
+                string fileName = txtFile.Text.Trim(); //get user input
+                byte[] fileNameByte = Encoding.ASCII.GetBytes(fileName); //get filename
+                byte[] fileData = File.ReadAllBytes(fileName); //get file data
+
+                writer.WriteLine("Sending image"); //server protocol
+                writer.WriteLine(fileName); //send filename
+                writer.WriteLine(fileData.Length); // send length of filedata
+                writer.Flush();
+
+                client.Send(fileData); //send file
+                SetText(fileName + " has been sent");
+            }
+
+            catch (Exception Ex)
+            {
+                SetText(Ex.Message);
+            }
         }
 
         private void btnReceive_Click(object sender, EventArgs e)
