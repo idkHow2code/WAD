@@ -18,23 +18,19 @@ namespace Server
     {
         Dictionary<String, String> phoneBook = new Dictionary<String, String>();
         Dictionary<String, Socket> ActiveUsers = new Dictionary<String, Socket>();
+        Socket server = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
         delegate void SetTextCallback(string text);
         NetworkStream ns2;
         StreamWriter writer;
         StreamReader reader;
-        Thread t2 = null;
+        Thread threadListen;
+        Thread threadDoWork = null;
+        int connections = 0;
         public Form2()
         {
             InitializeComponent();
-            Socket server = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
-            IPEndPoint localEP = new IPEndPoint(IPAddress.Any, 9049);
-            server.Bind(localEP);
-            server.Listen(10);
-            Socket client = server.Accept();
-            IPAddress client2addr = ((IPEndPoint)client.RemoteEndPoint).Address;
-            ns2 = new NetworkStream(client);
-            t2 = new Thread(DoWork);
-            t2.Start();
+            threadListen = new Thread(ListenClient);
+            threadListen.Start();
         }
         /// <summary>
         /// raj work
@@ -91,6 +87,20 @@ namespace Server
         /// raj work
         /// </summary>
 
+        public void ListenClient() //thread to listen for clients
+        {
+            IPEndPoint localEP = new IPEndPoint(IPAddress.Any, 9049);
+            server.Bind(localEP);
+            server.Listen(10);
+            Socket client = server.Accept();
+            IPAddress client2addr = ((IPEndPoint)client.RemoteEndPoint).Address;
+            ns2 = new NetworkStream(client);
+            connections++;
+            this.SetText("New client accepted : " + connections + " active connections");
+            threadDoWork = new Thread(DoWork);
+            threadDoWork.Start();
+        }
+
         private void btnSendFile_Click(object sender, EventArgs e)
         {
             
@@ -140,10 +150,6 @@ namespace Server
         }
 
 
-        private void btnListen_Click(object sender, EventArgs e) //to be deleted
-        {
-            
-        }
 
         private bool login(string name,string number)
         {

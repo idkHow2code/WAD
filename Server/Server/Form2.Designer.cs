@@ -40,7 +40,6 @@
             this.lblNoOfConnections = new System.Windows.Forms.Label();
             this.ddlActives = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.btnListen = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // txtChat
@@ -152,22 +151,11 @@
             this.label2.TabIndex = 11;
             this.label2.Text = "Send To :";
             // 
-            // btnListen
-            // 
-            this.btnListen.Location = new System.Drawing.Point(18, 45);
-            this.btnListen.Name = "btnListen";
-            this.btnListen.Size = new System.Drawing.Size(83, 26);
-            this.btnListen.TabIndex = 12;
-            this.btnListen.Text = "Listen";
-            this.btnListen.UseVisualStyleBackColor = true;
-            this.btnListen.Click += new System.EventHandler(this.btnListen_Click);
-            // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1105, 576);
-            this.Controls.Add(this.btnListen);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.ddlActives);
             this.Controls.Add(this.lblNoOfConnections);
@@ -201,6 +189,5 @@
         private System.Windows.Forms.Label lblNoOfConnections;
         private System.Windows.Forms.ComboBox ddlActives;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button btnListen;
     }
 }
