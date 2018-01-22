@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25123.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WK7 QTN2 Client", "WK7 QTN2 Client\WK7 QTN2 Client.csproj", "{A5D875DD-78AC-4B6A-95E5-8BF888B3E71D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ASGN CLIENT", "ASGNClient\ASGN CLIENT.csproj", "{A5D875DD-78AC-4B6A-95E5-8BF888B3E71D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

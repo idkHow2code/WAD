@@ -16,7 +16,7 @@ namespace Server
     {
         ArrayList tempList = new ArrayList();
         Dictionary<string, string> phoneBook = new Dictionary<string, string>();
-        String path = "PhoneBook.txt";
+        public static string path = "PhoneBook.txt";
         public Form1()
         {
             InitializeComponent();

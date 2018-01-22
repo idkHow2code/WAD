@@ -32,9 +32,7 @@
             this.txtMessage = new System.Windows.Forms.RichTextBox();
             this.btnSend = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
-            this.txtFile = new System.Windows.Forms.TextBox();
             this.btnSendFile = new System.Windows.Forms.Button();
-            this.btnReceive = new System.Windows.Forms.Button();
             this.lblResult = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.lblNoOfConnections = new System.Windows.Forms.Label();
@@ -44,7 +42,8 @@
             // 
             // txtChat
             // 
-            this.txtChat.Location = new System.Drawing.Point(9, 77);
+            this.txtChat.Location = new System.Drawing.Point(9, 78);
+            this.txtChat.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtChat.Name = "txtChat";
             this.txtChat.Size = new System.Drawing.Size(1094, 415);
             this.txtChat.TabIndex = 0;
@@ -53,14 +52,17 @@
             // txtMessage
             // 
             this.txtMessage.Location = new System.Drawing.Point(11, 508);
+            this.txtMessage.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtMessage.Name = "txtMessage";
             this.txtMessage.Size = new System.Drawing.Size(846, 56);
             this.txtMessage.TabIndex = 1;
             this.txtMessage.Text = "";
+            this.txtMessage.TextChanged += new System.EventHandler(this.txtMessage_TextChanged);
             // 
             // btnSend
             // 
             this.btnSend.Location = new System.Drawing.Point(868, 518);
+            this.btnSend.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnSend.Name = "btnSend";
             this.btnSend.Size = new System.Drawing.Size(101, 34);
             this.btnSend.TabIndex = 2;
@@ -71,6 +73,7 @@
             // btnSave
             // 
             this.btnSave.Location = new System.Drawing.Point(992, 518);
+            this.btnSave.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(101, 34);
             this.btnSave.TabIndex = 3;
@@ -78,16 +81,10 @@
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
-            // txtFile
-            // 
-            this.txtFile.Location = new System.Drawing.Point(648, 16);
-            this.txtFile.Name = "txtFile";
-            this.txtFile.Size = new System.Drawing.Size(209, 26);
-            this.txtFile.TabIndex = 4;
-            // 
             // btnSendFile
             // 
-            this.btnSendFile.Location = new System.Drawing.Point(868, 12);
+            this.btnSendFile.Location = new System.Drawing.Point(957, 19);
+            this.btnSendFile.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnSendFile.Name = "btnSendFile";
             this.btnSendFile.Size = new System.Drawing.Size(101, 34);
             this.btnSendFile.TabIndex = 5;
@@ -95,20 +92,10 @@
             this.btnSendFile.UseVisualStyleBackColor = true;
             this.btnSendFile.Click += new System.EventHandler(this.btnSendFile_Click);
             // 
-            // btnReceive
-            // 
-            this.btnReceive.Location = new System.Drawing.Point(992, 12);
-            this.btnReceive.Name = "btnReceive";
-            this.btnReceive.Size = new System.Drawing.Size(101, 34);
-            this.btnReceive.TabIndex = 6;
-            this.btnReceive.Text = "Receive";
-            this.btnReceive.UseVisualStyleBackColor = true;
-            this.btnReceive.Click += new System.EventHandler(this.btnReceive_Click);
-            // 
             // lblResult
             // 
             this.lblResult.AutoSize = true;
-            this.lblResult.Location = new System.Drawing.Point(952, 49);
+            this.lblResult.Location = new System.Drawing.Point(989, 55);
             this.lblResult.Name = "lblResult";
             this.lblResult.Size = new System.Drawing.Size(70, 20);
             this.lblResult.TabIndex = 7;
@@ -129,23 +116,23 @@
             this.lblNoOfConnections.AutoSize = true;
             this.lblNoOfConnections.Location = new System.Drawing.Point(166, 19);
             this.lblNoOfConnections.Name = "lblNoOfConnections";
-            this.lblNoOfConnections.Size = new System.Drawing.Size(24, 20);
+            this.lblNoOfConnections.Size = new System.Drawing.Size(18, 20);
             this.lblNoOfConnections.TabIndex = 9;
-            this.lblNoOfConnections.Text = "lbl";
+            this.lblNoOfConnections.Text = "0";
             // 
             // ddlActives
             // 
             this.ddlActives.FormattingEnabled = true;
-            this.ddlActives.Location = new System.Drawing.Point(330, 16);
+            this.ddlActives.Location = new System.Drawing.Point(660, 19);
+            this.ddlActives.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.ddlActives.Name = "ddlActives";
             this.ddlActives.Size = new System.Drawing.Size(284, 28);
             this.ddlActives.TabIndex = 10;
-            this.ddlActives.SelectedIndexChanged += new System.EventHandler(this.ddlActives_SelectedIndexChanged);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(247, 19);
+            this.label2.Location = new System.Drawing.Point(559, 19);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(77, 20);
             this.label2.TabIndex = 11;
@@ -161,15 +148,15 @@
             this.Controls.Add(this.lblNoOfConnections);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.lblResult);
-            this.Controls.Add(this.btnReceive);
             this.Controls.Add(this.btnSendFile);
-            this.Controls.Add(this.txtFile);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.btnSend);
             this.Controls.Add(this.txtMessage);
             this.Controls.Add(this.txtChat);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "Form2";
             this.Text = "EEGARAJE Server";
+            this.Load += new System.EventHandler(this.Form2_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -181,9 +168,7 @@
         private System.Windows.Forms.RichTextBox txtMessage;
         private System.Windows.Forms.Button btnSend;
         private System.Windows.Forms.Button btnSave;
-        private System.Windows.Forms.TextBox txtFile;
         private System.Windows.Forms.Button btnSendFile;
-        private System.Windows.Forms.Button btnReceive;
         private System.Windows.Forms.Label lblResult;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label lblNoOfConnections;
